@@ -1,6 +1,6 @@
 {
   "name": "pingo",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Love for NodeJS",
   "main": "src/core/main.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
-    "release": "build"
+    "release": "./node_modules/.bin/electron-builder build -p always"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,26 @@
     "mac": {
       "category": "public.app-category.developer-tools",
       "type": "distribution"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "category": "Finance",
+      "target": [
+        "deb"
+      ],
+      "executableName": "Echo Wallet",
+      "desktop": "Echo Wallet",
+      "synopsis": "Echo Wallet: Cryptocurrency wallet for Echo platform"
     },
     "publish": [
       "github"
